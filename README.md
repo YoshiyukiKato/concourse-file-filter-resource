@@ -1,5 +1,5 @@
 # concourse-pr-diff-resource
-A concourse resource to .
+A concourse resource to extract diff of target branch and base branch on a PR.
 
 ## prerequisite
 This resource assumed to be used with [github pull request resource](https://github.com/jtarchie/github-pullrequest-resource).
@@ -12,12 +12,6 @@ This resource assumed to be used with [github pull request resource](https://git
 ## `check`
 ## `in`
 ## `out`
-
-### params
-|key|type|required|default|description|
-|--|--|--|--|--|
-|target|
-
 
 ```yaml
 resource_types:
