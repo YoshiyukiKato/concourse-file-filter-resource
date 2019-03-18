@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+
+exec 3>&1 # make stdout available as fd 3 for the result
+exec 1>&2 # redirect all output to stderr for logging
+
+# Read inputs
+source=$1
+payload=$(mktemp pr-diff-resource-request.XXXXXX)
+cat > $payload <&0
+
+target=$($(jq -r '.source.target // ""' < $payload))
+
+cd $source
+echo "pwd: $(pwd)"
+
+#output=$(echo '{ "ref" : "", "version": {"pr":""} }' | jq --arg REF "$pr_head_ref" '.ref = $REF' | jq --arg PR "$PULL_REQUEST_ID" '.version.pr = $PR')
+echo '{ "ref" : "none" }' >&3
